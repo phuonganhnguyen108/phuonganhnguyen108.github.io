@@ -1,0 +1,18 @@
+h1 {
+    color: red;
+}
+h2 {
+    color: blue; 
+    text-decoration: underline;
+}
+p {
+    color: blue;
+}
+.uppercase {
+    text-transform: uppercase;
+}
+.special {
+    color: red;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
