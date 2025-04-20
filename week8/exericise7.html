@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <meta charset="UTF-8">
+  <title>Register New Account</title>
+  <script>
+    function formValid() {
+      var f = document.frmRegister;
+      var phone_pattern = /^((\(\d{1,3}\)\d{7})|(\d{9,10}))$/;
+      var email_pattern = /^[a-zA-Z]\w*(\.\w+)*@\w+(\.\w{2,3})+$/;
+
+      if(f.txtUsername.value == ""){
+          alert("Username can't be empty");
+          f.txtUsername.focus();
+          return false;
+      }
+
+      if(f.txtPassword1.value.length < 6 || f.txtPassword1.value.length > 20){
+          alert("Password length must be from 6 to 20 characters");
+          f.txtPassword1.focus();
+          return false;
+      }
+
+      if(f.txtPassword1.value != f.txtPassword2.value){
+          alert("Password doesn't match");
+          f.txtPassword2.focus();
+          return false;
+      }
+
+      if(phone_pattern.test(f.txtPhone.value) == false){
+          alert("Invalid phone number");
+          f.txtPhone.focus();
+          return false;
+      }
+
+      if(email_pattern.test(f.txtEmail.value) == false){
+          alert("Invalid email address");
+          f.txtEmail.focus();
+          return false;
+      }
+
+      if(f.chkMusic.checked == false && f.chkReading.checked == false){
+          alert("You must select at least one favourite");
+          f.chkMusic.focus();
+          return false;
+      }
+
+      if(f.filepicture.value == ""){
+          alert("You must select your picture");
+          f.filepicture.focus();
+          return false;
+      }
+
+      if(f.txtDescription.value == ""){
+          alert("You must enter description");
+          f.txtDescription.focus();
+          return false;
+      }
+
+      alert("All register information are correct.");
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <h2>REGISTER NEW ACCOUNT</h2>
+  <form name="frmRegister" method="get" onsubmit="return formValid();" enctype="multipart/form-data">
+    <label>Username: </label><input type="text" name="txtUsername"><br><br>
+
+    <label>Password: </label><input type="password" name="txtPassword1"><br><br>
+
+    <label>Confirm password: </label><input type="password" name="txtPassword2"><br><br>
+
+    <label>Gender: </label>
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female<br><br>
+
+    <label>Phone: </label><input type="text" name="txtPhone"><br><br>
+
+    <label>Email: </label><input type="text" name="txtEmail"><br><br>
+
+    <label>Favourite: </label>
+    <input type="checkbox" name="chkMusic"> Music
+    <input type="checkbox" name="chkReading"> Reading<br><br>
+
+    <label>Picture: </label><input type="file" name="filepicture"><br><br>
+
+    <label>Description: </label><br>
+    <textarea name="txtDescription" rows="4" cols="50"></textarea><br><br>
+
+    <label>Education level: </label>
+    <select name="education">
+      <option value="Aptech">Aptech</option>
+      <option value="Bachelor">Bachelor</option>
+      <option value="Master">Master</option>
+    </select><br><br>
+
+    <label>Language: </label><br>
+    <select name="language" >
+      <option value="Vietnamese">Vietnamese</option>
+      <option value="English">English</option>
+      <option value="French">French</option>
+      <option value="Japanese">Japanese</option>
+    </select><br><br>
+
+    <input type="submit" value="Register">
+    <input type="reset" value="Reset">
+  </form>
+</body>
+</html>
